@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 50
+/svn/!svn/ver/4/trunk/examples/src/main/webapp/jsp
+END
+index.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/svn/!svn/ver/4/trunk/examples/src/main/webapp/jsp/index.jsp
+END
+index1.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/svn/!svn/ver/4/trunk/examples/src/main/webapp/jsp/index1.jsp
+END
+helloWorld.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/svn/!svn/ver/4/trunk/examples/src/main/webapp/jsp/helloWorld.jsp
+END
