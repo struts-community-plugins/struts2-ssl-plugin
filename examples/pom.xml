@@ -6,16 +6,15 @@
 	<artifactId>struts2-ssl-example1</artifactId>
 	<packaging>war</packaging>
 	<version>1.0-SNAPSHOT</version>
-	<name>Struts 2 Starter</name>
-	<url>http://www.myComp.com</url>
-	<description>Struts 2 Starter</description>
-	
+
+	<name>Struts 2 SSL Plugin example</name>
+
 	<dependencies>
 		<!-- Junit -->
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
-			<version>3.8.1</version>
+			<version>4.5</version>
 			<scope>test</scope>
 		</dependency>
 
@@ -23,18 +22,32 @@
 		<dependency>
             <groupId>org.apache.struts</groupId>
             <artifactId>struts2-core</artifactId>
-            <version>2.0.11</version>
+            <version>2.5.20</version>
         </dependency>
-        <dependency>
-            <groupId>com.googlecode.sslplugin</groupId>
-            <artifactId>struts2-ssl-plugin</artifactId>
-            <version>1.0</version>
-        </dependency>
+
         <dependency>
             <groupId>org.apache.struts</groupId>
             <artifactId>struts2-spring-plugin</artifactId>
-            <version>2.0.11</version>
+            <version>2.5.20</version>
         </dependency>
+
+		<dependency>
+			<groupId>org.apache.logging.log4j</groupId>
+			<artifactId>log4j-api</artifactId>
+			<version>2.12.1</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.apache.logging.log4j</groupId>
+			<artifactId>log4j-core</artifactId>
+			<version>2.12.1</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.github.struts-community-plugins</groupId>
+			<artifactId>struts2-ssl-plugin</artifactId>
+			<version>1.2.0-SNAPSHOT</version>
+		</dependency>
 
 		<!-- Servlet & Jsp -->
 		<dependency>
@@ -43,6 +56,7 @@
 			<version>2.4</version>
 			<scope>provided</scope>
 		</dependency>
+
 		<dependency>
 			<groupId>javax.servlet</groupId>
 			<artifactId>jsp-api</artifactId>
@@ -54,45 +68,35 @@
     <build>
       <finalName>struts2-ssl-example1</finalName>
     	<plugins>
-    		<plugin>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <configuration>
-                   <source>1.5</source>
-                   <target>1.5</target>
-                </configuration>
-            </plugin>
-    		<plugin>
-    			<groupId>org.mortbay.jetty</groupId>
-    			<artifactId>maven-jetty-plugin</artifactId>
-    			<version>6.1.5</version>
-    			<configuration>
-    				<scanIntervalSeconds>10</scanIntervalSeconds>
-                    <jettyConfig>src/main/resources/jetty.xml</jettyConfig>
-                </configuration>
-    		</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>3.8.1</version>
+				<configuration>
+					<target>1.8</target>
+					<source>1.8</source>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.eclipse.jetty</groupId>
+				<artifactId>jetty-maven-plugin</artifactId>
+				<version>9.4.22.v20191022</version>
+				<configuration>
+					<stopKey>CTRL+C</stopKey>
+					<stopPort>8999</stopPort>
+					<webAppSourceDirectory>${basedir}/src/main/webapp/</webAppSourceDirectory>
+					<webAppConfig>
+						<descriptor>${basedir}/src/main/webapp/WEB-INF/web.xml</descriptor>
+					</webAppConfig>
+					<scanIntervalSeconds>10</scanIntervalSeconds>
+					<scanTargets>
+						<scanTarget>src/main/webapp/WEB-INF</scanTarget>
+						<scanTarget>src/main/webapp/WEB-INF/web.xml</scanTarget>
+						<scanTarget>src/main/resources/struts.xml</scanTarget>
+					</scanTargets>
+				</configuration>
+			</plugin>
     	</plugins>
     </build>
-
-    <!--<repositories>
-         <repository>
-             <id>central</id>
-             <name>My Central Repository</name>
-             <url>http://localhost:9999/repository</url>
-             <snapshots>
-                 <enabled>true</enabled>
-             </snapshots>
-             <releases>
-                 <enabled>true</enabled>
-             </releases>
-         </repository>
-     </repositories>
-
-    <pluginRepositories>
-         <pluginRepository>
-             <id>central</id>
-             <name>My Central Repository</name>
-             <url>http://localhost:9999/repository</url>
-         </pluginRepository>
-     </pluginRepositories>-->
 
 </project>

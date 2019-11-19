@@ -1,14 +1,10 @@
 package com.googlecode.sslplugin.example;
 
-
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.validator.annotations.RequiredStringValidator;
 import com.googlecode.sslplugin.annotation.Secured;
 
-
-
 public class HelloWorldAction extends ActionSupport {
-
 
     private String name;
 
@@ -25,4 +21,5 @@ public class HelloWorldAction extends ActionSupport {
     public String execute1() throws Exception {
         return SUCCESS;
     }
+
 }
