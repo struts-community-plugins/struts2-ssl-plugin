@@ -3,44 +3,66 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-   <groupId>com.googlecode.sslplugin</groupId>
-   <artifactId>struts2-ssl-plugin</artifactId>
-   <version>1.1</version>
-   <name>Struts 2 Plugin</name>
+    <groupId>com.github.struts-community-plugins</groupId>
+    <artifactId>struts2-ssl-plugin</artifactId>
+    <version>1.2.0-SNAPSHOT</version>
+    <name>Struts 2 SSL Plugin</name>
+
+    <properties>
+        <log4j.version>2.12.1</log4j.version>
+        <struts2.version>2.5.20</struts2.version>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    </properties>
 
     <dependencies>
 
         <dependency>
             <groupId>org.apache.struts</groupId>
             <artifactId>struts2-core</artifactId>
-            <version>2.0.11</version>
+            <version>2.5.20</version>
         </dependency>
+
+        <dependency>
+            <groupId>org.apache.logging.log4j</groupId>
+            <artifactId>log4j-api</artifactId>
+            <version>${log4j.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.logging.log4j</groupId>
+            <artifactId>log4j-core</artifactId>
+            <version>${log4j.version}</version>
+        </dependency>
+
         <dependency>
             <groupId>javax.servlet</groupId>
             <artifactId>servlet-api</artifactId>
             <version>2.4</version>
             <scope>provided</scope>
         </dependency>
+
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
-            <version>3.8.1</version>
+            <version>4.5</version>
             <scope>test</scope>
         </dependency>
- 
+
     </dependencies>
 
     <build>
         <defaultGoal>install</defaultGoal>
         <plugins>
-    		<plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.8.1</version>
                 <configuration>
-                   <source>1.5</source>
-                   <target>1.5</target>
+                    <target>1.8</target>
+                    <source>1.8</source>
                 </configuration>
             </plugin>
-    	</plugins>
+        </plugins>
     </build>
 
 </project>

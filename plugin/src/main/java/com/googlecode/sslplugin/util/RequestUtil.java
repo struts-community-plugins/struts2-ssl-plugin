@@ -5,14 +5,12 @@ import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 import java.util.*;
 
-
 public class RequestUtil {
 
     public static String buildQueryString(HttpServletRequest request) {
-
         // add query string, if any
         String queryString = request.getQueryString();
-        StringBuffer finalQs = new StringBuffer();
+        StringBuilder finalQs = new StringBuilder();
 
         if (queryString != null && queryString.length() != 0) {
             finalQs.append(queryString);
@@ -23,23 +21,18 @@ public class RequestUtil {
             }
         }
 
-        return finalQs.length()== 0 ? null : finalQs.toString();
-
+        return finalQs.length() == 0 ? null : finalQs.toString();
     }
-
 
     public static String getRequestParameters(HttpServletRequest aRequest) {
-
         return createQueryStringFromMap(aRequest.getParameterMap(), "&").toString();
     }
-
 
     public static StringBuffer createQueryStringFromMap(Map m, String ampersand) {
         StringBuffer aReturn = new StringBuffer("");
         Set aEntryS = m.entrySet();
-        Iterator aEntryI = aEntryS.iterator();
-        while (aEntryI.hasNext()) {
-            Map.Entry aEntry = (Map.Entry) aEntryI.next();
+        for (Object entry : aEntryS) {
+            Map.Entry aEntry = (Map.Entry) entry;
             Object value = aEntry.getValue();
             String[] aValues = new String[1];
             if (value == null) {
@@ -52,16 +45,14 @@ public class RequestUtil {
             } else { // String array, the standard returned from request.getParameterMap()
                 aValues = (String[]) value;  // This is the standard
             }
-            for (int i = 0; i < aValues.length; i++) {
-
-                append(aEntry.getKey(), aValues[i], aReturn, ampersand);
+            for (String aValue : aValues) {
+                append(aEntry.getKey(), aValue, aReturn, ampersand);
             }
         }
         return aReturn;
     }
 
     private static StringBuffer append(Object key, Object value, StringBuffer queryString, String ampersand) {
-
         if (queryString.length() > 0) {
             queryString.append(ampersand);
         }
@@ -70,12 +61,10 @@ public class RequestUtil {
             queryString.append(URLEncoder.encode(key.toString(), "UTF-8"));
             queryString.append("=");
             queryString.append(URLEncoder.encode(value.toString(), "UTF-8"));
-        } catch (UnsupportedEncodingException e) {
-
+        } catch (UnsupportedEncodingException ignored) {
         }
 
         return queryString;
     }
-
 
 }
