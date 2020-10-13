@@ -9,7 +9,7 @@
     <name>Struts 2 SSL Plugin</name>
 
     <properties>
-        <log4j.version>2.12.1</log4j.version>
+        <log4j.version>2.13.3</log4j.version>
         <struts2.version>2.5.20</struts2.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
